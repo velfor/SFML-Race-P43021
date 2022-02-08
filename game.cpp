@@ -10,6 +10,7 @@ Game::Game() {
 		"ITSteps SFML Race",
 		sf::Style::Titlebar | sf::Style::Close
 	);
+	window.setFramerateLimit(FPS);
 	road1.init(0.f,0.f);
 	road2.init(0.f, -WINDOW_HEIGHT);
 }
@@ -30,6 +31,7 @@ void Game::play() {
 		window.clear(sf::Color::Black);
 		window.draw(road1.getSprite());
 		window.draw(road2.getSprite());
+		window.draw(car.getSprite());
 		window.display();
 	}
 }
