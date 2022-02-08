@@ -27,6 +27,7 @@ void Game::play() {
 		//2 update
 		road1.update();
 		road2.update();
+		car.update();
 		//3 отрисовка окна
 		window.clear(sf::Color::Black);
 		window.draw(road1.getSprite());

@@ -21,7 +21,30 @@ public:
 			WINDOW_WIDTH / 2.f,
 			WINDOW_HEIGHT - global_bounds.height / 2 - 20
 		);
-
+		//sprite.setOrigin(0.f, 0.f);
 	}
 	sf::Sprite getSprite() { return sprite; }
+	sf::FloatRect getHitBox() {return sprite.getGlobalBounds();	}
+	void update() {
+		speed = sf::Vector2f(0.f,0.f);
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) ||
+			sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+		{
+			speed = sf::Vector2f(-5.f, 0.f);
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) ||
+			sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+		{
+			speed = sf::Vector2f(5.f, 0.f);
+		}
+		sprite.move(speed);
+		sf::Vector2f curr_pos = sprite.getPosition();
+		if (curr_pos.x <= getHitBox().width / 2) {
+			sprite.setPosition(getHitBox().width / 2, curr_pos.y);
+		}
+		else if (curr_pos.x >= WINDOW_WIDTH - getHitBox().width/2) {
+			sprite.setPosition(WINDOW_WIDTH - getHitBox().width/2,
+				curr_pos.y);
+		}
+	}
 };
