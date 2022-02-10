@@ -21,7 +21,6 @@ public:
 			WINDOW_WIDTH / 2.f,
 			WINDOW_HEIGHT - global_bounds.height / 2 - 20
 		);
-		//sprite.setOrigin(0.f, 0.f);
 	}
 	sf::Sprite getSprite() { return sprite; }
 	sf::FloatRect getHitBox() {return sprite.getGlobalBounds();	}
